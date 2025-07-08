@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapProjects - Academic Project Showcase</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --secondary-color: #10b981;
+            --secondary-dark: #059669;
+            --accent-color: #f59e0b;
+            --accent-dark: #d97706;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --bg-gray: #f1f5f9;
+            --border-color: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            --gradient-secondary: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
+            --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Enhanced Header */
+        header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            animation: slideInUp 1s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #e0e7ff, #c7d2fe);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .header-content p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .header-subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
+            font-weight: 300;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2rem 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: slideInUp 1s ease-out 0.6s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+            opacity: 0;
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+            transform: rotate(45deg) translate(100%, 100%);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Enhanced Filters */
+        .filters {
+            padding: 3rem 0;
+            text-align: center;
+            background: var(--bg-white);
+            position: relative;
+        }
+
+        .filters::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--primary-color);
+            background: white;
+            color: var(--primary-color);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+        }
+
+        .filter-btn span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .filter-btn.active::before,
+        .filter-btn:hover::before {
+            left: 0;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px -8px var(--primary-color);
+        }
+
+        /* Enhanced Projects Section */
+        .projects-section {
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg-white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-light);
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .project-card.animate-in {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient-primary);
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(37, 99, 235, 0.1) 0%, 
+                rgba(16, 185, 129, 0.1) 100%);
+            z-index: 1;
+        }
+
+        .project-image video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image video {
+            transform: scale(1.05);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-image .placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .project-content {
+            padding: 2.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .project-category {
+            display: inline-block;
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .project-category:hover::before {
+            left: 100%;
+        }
+
+        .project-category.software {
+            background: var(--gradient-primary);
+        }
+
+        .project-category.hardware {
+            background: var(--gradient-accent);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .tech-stack {
+            margin-bottom: 2rem;
+        }
+
+        .tech-stack h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-gray);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .project-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px -8px var(--primary-color);
+        }
+
+        .btn-secondary {
+            background: var(--gradient-secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px -8px var(--secondary-color);
+        }
+
+        /* Enhanced Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(37, 99, 235, 0.1) 0%, 
+                rgba(16, 185, 129, 0.1) 100%);
+        }
+
+        footer p {
+            opacity: 0.9;
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+            }
+
+            .stat-card {
+                min-width: 250px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .project-actions {
+                flex-direction: column;
+            }
+
+            .filter-buttons {
+                gap: 1rem;
+            }
+
+            .filter-btn {
+                padding: 0.875rem 2rem;
+            }
+
+            .project-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+
+            .header-content h1 {
+                font-size: 2rem;
+            }
+
+            .project-image {
+                height: 200px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Enhanced Animations */
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+            position: relative;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Pulse animation for stats */
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Stagger animation for project cards */
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+        .project-card:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Enhanced video controls */
+        video::-webkit-media-controls-panel {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        video::-webkit-media-controls-play-button,
+        video::-webkit-media-controls-volume-slider,
+        video::-webkit-media-controls-timeline {
+            filter: brightness(1.2);
+        }
+
+        /* Loading dots animation */
+        .loading-dots {
+            display: inline-flex;
+            gap: 4px;
+        }
+
+        .loading-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+            animation: bounce 1.4s ease-in-out infinite both;
+        }
+
+        .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>SnapProjects</h1>
+                <p>Discover and Download Premium Academic Projects</p>
+                <p class="header-subtitle">Quality • Innovation • Excellence</p>
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number pulse" id="hardware-count">0</div>
+                        <div class="stat-label">Hardware Projects</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number pulse" id="software-count">0</div>
+                        <div class="stat-label">Software Projects</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="filters">
+            <div class="container">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">
+                        <span>All Projects</span>
+                    </button>
+                    <button class="filter-btn" data-filter="hardware">
+                        <span>Hardware</span>
+                    </button>
+                    <button class="filter-btn" data-filter="software">
+                        <span>Software</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section">
+            <div class="container">
+                <div class="projects-grid" id="projects-grid">
+                    <!-- Projects will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SnapProjects. All rights reserved. | Quality Academic Projects</p>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced project data with multiple projects for demonstration
+        const projects = [
+            {
+                id: 1,
+                title: "QubPay – Dynamic UPI QR Payment App",
+                category: "software",
+                description: "A desktop application featuring a split-panel interface for instant UPI QR generation. The left panel handles user inputs (amount/note entry) while the right panel displays scannable QR codes with payment details. Includes transaction history tracking with running totals and requires no external databases. QubPay is a Python-based UPI payment solution that simplifies digital transactions through dynamic QR generation. Its innovative split-panel design separates controls (left) from outputs (right), enabling 70% faster payments than manual UPI sharing.",
+                technologies: ["Python", "Tkinter", "qrcode", "Pillow", "UPI", "GUI"],
+                features: [
+                    "Split-panel interface (30/70 width ratio)",
+                    "Instant QR generation (<0.3sec)",
+                    "Transaction history with running total",
+                    "UPI ID validation and editing",
+                    "No internet/database requirements"
+                ],
+                price: 800,
+                metrics: {
+                    qrSize: "250x250px",
+                    ramUsage: "<50MB",
+                    dependencies: "2 (Pillow, qrcode)"
+                },
+                video: "qubpay.mp4",
+                poster: "https://images.pexels.com/photos/6953876/pexels-photo-6953876.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                id: 2,
+                title: "IoT Smart Home Automation System",
+                category: "hardware",
+                description: "Complete IoT-based home automation system with Arduino, ESP32, and mobile app control. Features real-time monitoring, voice control, and energy management. Includes sensors for temperature, humidity, motion detection, and smart lighting control with web dashboard.",
+                technologies: ["Arduino", "ESP32", "React", "Node.js", "MongoDB", "IoT"],
+                features: [
+                    "Real-time sensor monitoring",
+                    "Mobile app control interface",
+                    "Voice command integration",
+                    "Energy consumption tracking",
+                    "Automated scheduling system"
+                ],
+                price: 1200,
+                metrics: {
+                    sensors: "8 integrated sensors",
+                    range: "100m WiFi coverage",
+                    battery: "48hr backup"
+                },
+                image: "https://images.pexels.com/photos/8469451/pexels-photo-8469451.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                id: 3,
+                title: "AI-Powered Student Management System",
+                category: "software",
+                description: "Comprehensive student management system with AI-powered analytics, attendance tracking, grade prediction, and performance insights. Features automated report generation, parent-teacher communication portal, and machine learning-based student behavior analysis.",
+                technologies: ["Python", "Django", "TensorFlow", "PostgreSQL", "React", "AI/ML"],
+                features: [
+                    "AI-powered grade prediction",
+                    "Automated attendance tracking",
+                    "Performance analytics dashboard",
+                    "Parent-teacher communication",
+                    "Behavioral pattern analysis"
+                ],
+                price: 1500,
+                metrics: {
+                    accuracy: "94% prediction accuracy",
+                    users: "1000+ concurrent users",
+                    reports: "25+ report types"
+                },
+                image: "https://images.pexels.com/photos/8500076/pexels-photo-8500076.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                id: 4,
+                title: "Blockchain-Based Supply Chain Tracker",
+                category: "software",
+                description: "Decentralized supply chain tracking system using blockchain technology. Provides transparent, immutable tracking of products from manufacturer to consumer. Features smart contracts, QR code integration, and real-time tracking dashboard.",
+                technologies: ["Solidity", "Web3.js", "Ethereum", "React", "Node.js", "Blockchain"],
+                features: [
+                    "Immutable product tracking",
+                    "Smart contract automation",
+                    "QR code integration",
+                    "Real-time transparency",
+                    "Anti-counterfeiting measures"
+                ],
+                price: 1800,
+                metrics: {
+                    transactions: "10,000+ per day",
+                    verification: "99.9% authenticity",
+                    speed: "3sec block time"
+                },
+                image: "https://images.pexels.com/photos/8360479/pexels-photo-8360479.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                id: 5,
+                title: "Robotic Arm with Computer Vision",
+                category: "hardware",
+                description: "6-DOF robotic arm with integrated computer vision for object recognition and precise manipulation. Features OpenCV integration, machine learning-based object detection, and real-time control interface. Perfect for industrial automation and educational purposes.",
+                technologies: ["Arduino", "OpenCV", "Python", "Servo Motors", "Computer Vision", "ML"],
+                features: [
+                    "6-axis movement control",
+                    "Real-time object detection",
+                    "Precision manipulation",
+                    "Computer vision integration",
+                    "Remote control interface"
+                ],
+                price: 2200,
+                metrics: {
+                    precision: "±0.1mm accuracy",
+                    payload: "2kg max weight",
+                    speed: "360°/sec rotation"
+                },
+                image: "https://images.pexels.com/photos/8439093/pexels-photo-8439093.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                id: 6,
+                title: "E-Commerce Platform with Analytics",
+                category: "software",
+                description: "Full-featured e-commerce platform with advanced analytics, inventory management, and customer relationship management. Includes payment gateway integration, order tracking, and business intelligence dashboard with predictive analytics.",
+                technologies: ["React", "Node.js", "MongoDB", "Stripe", "AWS", "Analytics"],
+                features: [
+                    "Complete e-commerce solution",
+                    "Advanced analytics dashboard",
+                    "Inventory management system",
+                    "Payment gateway integration",
+                    "Customer relationship management"
+                ],
+                price: 1600,
+                metrics: {
+                    transactions: "50,000+ per month",
+                    uptime: "99.9% availability",
+                    performance: "2sec load time"
+                },
+                image: "https://images.pexels.com/photos/6913845/pexels-photo-6913845.jpeg?auto=compress&cs=tinysrgb&w=400"
+            }
+        ];
+
+        // DOM elements
+        const projectsGrid = document.getElementById('projects-grid');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const hardwareCount = document.getElementById('hardware-count');
+        const softwareCount = document.getElementById('software-count');
+
+        // Initialize the application
+        function init() {
+            updateCounts();
+            renderProjects(projects);
+            setupEventListeners();
+            animateCounters();
+            setupScrollAnimations();
+        }
+
+        // Enhanced counter animation
+        function animateCounters() {
+            const hardware = projects.filter(project => project.category === 'hardware').length;
+            const software = projects.filter(project => project.category === 'software').length;
+            
+            setTimeout(() => {
+                animateNumber(hardwareCount, hardware);
+                animateNumber(softwareCount, software);
+            }, 800);
+        }
+
+        // Enhanced number animation
+        function animateNumber(element, target) {
+            let current = 0;
+            const increment = target / 30;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 50);
+        }
+
+        // Update project counts
+        function updateCounts() {
+            const hardware = projects.filter(project => project.category === 'hardware').length;
+            const software = projects.filter(project => project.category === 'software').length;
+            
+            hardwareCount.textContent = hardware;
+            softwareCount.textContent = software;
+        }
+
+        // Enhanced project rendering with staggered animations
+        function renderProjects(projectsToRender) {
+            projectsGrid.innerHTML = '';
+            
+            projectsToRender.forEach((project, index) => {
+                const projectCard = createProjectCard(project);
+                projectsGrid.appendChild(projectCard);
+                
+                // Staggered animation
+                setTimeout(() => {
+                    projectCard.classList.add('animate-in');
+                }, index * 100);
+            });
+        }
+
+        // Enhanced project card creation
+        function createProjectCard(project) {
+            const card = document.createElement('div');
+            card.className = 'project-card fade-in';
+            
+            let mediaContent = '';
+            if (project.video) {
+                mediaContent = `
+                    <video 
+                        width="100%" 
+                        height="240" 
+                        controls 
+                        preload="metadata"
+                        poster="${project.poster || project.image || ''}"
+                        onloadstart="this.volume=0.5"
+                    >
+                        <source src="${project.video}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-overlay"></div>
+                `;
+            } else if (project.image) {
+                mediaContent = `<img src="${project.image}" alt="${project.title}" loading="lazy">`;
+            } else {
+                mediaContent = `<div class="placeholder">🚀 ${project.title}</div>`;
+            }
+
+            card.innerHTML = `
+                <div class="project-image">
+                    ${mediaContent}
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">${project.title}</h3>
+                    <span class="project-category ${project.category}">${project.category}</span>
+                    <p class="project-description">${project.description}</p>
+                    <div class="tech-stack">
+                        <h4>Technologies Used:</h4>
+                        <div class="tech-list">
+                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="project-price">₹${project.price.toLocaleString()}</div>
+                    <div class="project-actions">
+                        <button class="btn btn-primary" onclick="downloadPDF(${project.id})">
+                            📄 Download PDF
+                        </button>
+                        <button class="btn btn-secondary" onclick="bookViaWhatsApp('${project.title.replace(/'/g, "\\'")}', ${project.price})">
+                            💬 Book via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        // Enhanced event listeners
+        function setupEventListeners() {
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Add loading state
+                    projectsGrid.classList.add('loading');
+                    
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Filter projects with delay for smooth animation
+                    setTimeout(() => {
+                        const filter = this.getAttribute('data-filter');
+                        filterProjects(filter);
+                        projectsGrid.classList.remove('loading');
+                    }, 200);
+                });
+            });
+
+            // Enhanced smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Enhanced scroll animations
+        function setupScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                observer.observe(card);
+            });
+        }
+
+        // Enhanced filter projects
+        function filterProjects(filter) {
+            let filteredProjects;
+            
+            if (filter === 'all') {
+                filteredProjects = projects;
+            } else {
+                filteredProjects = projects.filter(project => project.category === filter);
+            }
+            
+            renderProjects(filteredProjects);
+        }
+
+        // Enhanced PDF generation
+        function downloadPDF(projectId) {
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            // Show enhanced loading state
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = `
+                <div class="loading-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                Generating...
+            `;
+            button.disabled = true;
+
+            setTimeout(() => {
+                // Create enhanced PDF content
+                const pdfContent = `
+SnapProjects - Project Details
+=====================================
+
+Project Title: ${project.title}
+Category: ${project.category.toUpperCase()}
+Price: ₹${project.price.toLocaleString()}
+Project ID: #SP${project.id.toString().padStart(3, '0')}
+
+Description:
+${project.description}
+
+Technologies Used:
+${project.technologies.map(tech => `• ${tech}`).join('\n')}
+
+Key Features:
+${project.features ? project.features.map(feature => `• ${feature}`).join('\n') : 'Complete feature list available in full documentation'}
+
+Technical Specifications:
+${project.metrics ? Object.entries(project.metrics).map(([key, value]) => `• ${key}: ${value}`).join('\n') : 'Detailed specs included in project files'}
+
+Project Deliverables:
+• Complete source code with comments
+• Detailed project documentation
+• Installation and setup guide
+• Technical support for 6 months
+• Free updates and bug fixes
+• Commercial usage rights included
+
+Contact Information:
+=====================================
+Email: contact@snapprojects.com
+WhatsApp: +91-9074217605
+Website: www.snapprojects.com
+
+Support Services:
+• 24/7 Technical Support
+• Video call assistance
+• Remote installation help
+• Custom modifications available
+• Academic presentation support
+
+Payment Options:
+• UPI: snapprojects@upi
+• Bank Transfer: Available on request
+• PayPal: Available for international customers
+• Installment plans available
+
+Terms & Conditions:
+• 30-day money-back guarantee
+• Plagiarism-free code guarantee
+• Lifetime access to project files
+• Free technical consultation
+
+© 2025 SnapProjects - Quality Academic Projects
+All rights reserved. This document contains confidential information.
+                `.trim();
+
+                // Create and download blob
+                const blob = new Blob([pdfContent], { type: 'text/plain' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `SnapProjects_${project.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_details.txt`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+
+                // Reset button with success animation
+                button.innerHTML = '✅ Downloaded!';
+                button.style.background = 'var(--gradient-secondary)';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    button.style.background = '';
+                }, 2000);
+            }, 1500);
+        }
+
+        // Enhanced WhatsApp integration
+        function bookViaWhatsApp(projectTitle, price) {
+            const message = `🚀 Hi SnapProjects Team!
+
+I'm interested in the project: "${projectTitle}"
+💰 Price: ₹${price.toLocaleString()}
+
+Please provide me with:
+✅ Complete project details and specifications
+✅ Source code preview/demo
+✅ Timeline for delivery
+✅ Payment options and methods
+✅ Technical support details
+✅ Any current offers or discounts
+
+I'm looking forward to your quick response!
+
+Best regards,
+Interested Customer`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/9846243030?text=${encodedMessage}`;
+            
+            // Open in new tab with tracking
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        }
+
+        // Enhanced search functionality
+        function searchProjects(query) {
+            const filteredProjects = projects.filter(project => 
+                project.title.toLowerCase().includes(query.toLowerCase()) ||
+                project.description.toLowerCase().includes(query.toLowerCase()) ||
+                project.technologies.some(tech => tech.toLowerCase().includes(query.toLowerCase())) ||
+                (project.features && project.features.some(feature => feature.toLowerCase().includes(query.toLowerCase())))
+            );
+            renderProjects(filteredProjects);
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+
+        // Enhanced performance monitoring
+        window.addEventListener('load', () => {
+            console.log('SnapProjects loaded successfully!');
+            // Add any performance tracking here
+        });
+
+        // Enhanced error handling
+        window.addEventListener('error', (e) => {
+            console.error('SnapProjects Error:', e.error);
+            // Add error reporting here
+        });
+    </script>
+</body>
+</html>
