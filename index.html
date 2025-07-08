@@ -755,134 +755,53 @@
     <script>
         // Enhanced project data with multiple projects for demonstration
         const projects = [
-            {
-                id: 1,
-                title: "QubPay – Dynamic UPI QR Payment App",
-                category: "software",
-                description: "A desktop application featuring a split-panel interface for instant UPI QR generation. The left panel handles user inputs (amount/note entry) while the right panel displays scannable QR codes with payment details. Includes transaction history tracking with running totals and requires no external databases. QubPay is a Python-based UPI payment solution that simplifies digital transactions through dynamic QR generation. Its innovative split-panel design separates controls (left) from outputs (right), enabling 70% faster payments than manual UPI sharing.",
-                technologies: ["Python", "Tkinter", "qrcode", "Pillow", "UPI", "GUI"],
-                features: [
-                    "Split-panel interface (30/70 width ratio)",
-                    "Instant QR generation (<0.3sec)",
-                    "Transaction history with running total",
-                    "UPI ID validation and editing",
-                    "No internet/database requirements"
-                ],
-                price: 800,
-                metrics: {
-                    qrSize: "250x250px",
-                    ramUsage: "<50MB",
-                    dependencies: "2 (Pillow, qrcode)"
-                },
-                video: "qubpay.mp4",
-                poster: "https://images.pexels.com/photos/6953876/pexels-photo-6953876.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                id: 2,
-                title: "IoT Smart Home Automation System",
-                category: "hardware",
-                description: "Complete IoT-based home automation system with Arduino, ESP32, and mobile app control. Features real-time monitoring, voice control, and energy management. Includes sensors for temperature, humidity, motion detection, and smart lighting control with web dashboard.",
-                technologies: ["Arduino", "ESP32", "React", "Node.js", "MongoDB", "IoT"],
-                features: [
-                    "Real-time sensor monitoring",
-                    "Mobile app control interface",
-                    "Voice command integration",
-                    "Energy consumption tracking",
-                    "Automated scheduling system"
-                ],
-                price: 1200,
-                metrics: {
-                    sensors: "8 integrated sensors",
-                    range: "100m WiFi coverage",
-                    battery: "48hr backup"
-                },
-                image: "https://images.pexels.com/photos/8469451/pexels-photo-8469451.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                id: 3,
-                title: "AI-Powered Student Management System",
-                category: "software",
-                description: "Comprehensive student management system with AI-powered analytics, attendance tracking, grade prediction, and performance insights. Features automated report generation, parent-teacher communication portal, and machine learning-based student behavior analysis.",
-                technologies: ["Python", "Django", "TensorFlow", "PostgreSQL", "React", "AI/ML"],
-                features: [
-                    "AI-powered grade prediction",
-                    "Automated attendance tracking",
-                    "Performance analytics dashboard",
-                    "Parent-teacher communication",
-                    "Behavioral pattern analysis"
-                ],
-                price: 1500,
-                metrics: {
-                    accuracy: "94% prediction accuracy",
-                    users: "1000+ concurrent users",
-                    reports: "25+ report types"
-                },
-                image: "https://images.pexels.com/photos/8500076/pexels-photo-8500076.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                id: 4,
-                title: "Blockchain-Based Supply Chain Tracker",
-                category: "software",
-                description: "Decentralized supply chain tracking system using blockchain technology. Provides transparent, immutable tracking of products from manufacturer to consumer. Features smart contracts, QR code integration, and real-time tracking dashboard.",
-                technologies: ["Solidity", "Web3.js", "Ethereum", "React", "Node.js", "Blockchain"],
-                features: [
-                    "Immutable product tracking",
-                    "Smart contract automation",
-                    "QR code integration",
-                    "Real-time transparency",
-                    "Anti-counterfeiting measures"
-                ],
-                price: 1800,
-                metrics: {
-                    transactions: "10,000+ per day",
-                    verification: "99.9% authenticity",
-                    speed: "3sec block time"
-                },
-                image: "https://images.pexels.com/photos/8360479/pexels-photo-8360479.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                id: 5,
-                title: "Robotic Arm with Computer Vision",
-                category: "hardware",
-                description: "6-DOF robotic arm with integrated computer vision for object recognition and precise manipulation. Features OpenCV integration, machine learning-based object detection, and real-time control interface. Perfect for industrial automation and educational purposes.",
-                technologies: ["Arduino", "OpenCV", "Python", "Servo Motors", "Computer Vision", "ML"],
-                features: [
-                    "6-axis movement control",
-                    "Real-time object detection",
-                    "Precision manipulation",
-                    "Computer vision integration",
-                    "Remote control interface"
-                ],
-                price: 2200,
-                metrics: {
-                    precision: "±0.1mm accuracy",
-                    payload: "2kg max weight",
-                    speed: "360°/sec rotation"
-                },
-                image: "https://images.pexels.com/photos/8439093/pexels-photo-8439093.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                id: 6,
-                title: "E-Commerce Platform with Analytics",
-                category: "software",
-                description: "Full-featured e-commerce platform with advanced analytics, inventory management, and customer relationship management. Includes payment gateway integration, order tracking, and business intelligence dashboard with predictive analytics.",
-                technologies: ["React", "Node.js", "MongoDB", "Stripe", "AWS", "Analytics"],
-                features: [
-                    "Complete e-commerce solution",
-                    "Advanced analytics dashboard",
-                    "Inventory management system",
-                    "Payment gateway integration",
-                    "Customer relationship management"
-                ],
-                price: 1600,
-                metrics: {
-                    transactions: "50,000+ per month",
-                    uptime: "99.9% availability",
-                    performance: "2sec load time"
-                },
-                image: "https://images.pexels.com/photos/6913845/pexels-photo-6913845.jpeg?auto=compress&cs=tinysrgb&w=400"
-            }
-        ];
+    {
+        id: 1,
+        title: "QubPay – Dynamic UPI QR Payment App",
+        category: "software",
+        description: "A desktop application featuring a split-panel interface for instant UPI QR generation. The left panel handles user inputs (amount/note entry) while the right panel displays scannable QR codes with payment details. Includes transaction history tracking with running totals and requires no external databases. QubPay is a Python-based UPI payment solution that simplifies digital transactions through dynamic QR generation. Its innovative split-panel design separates controls (left) from outputs (right), enabling 70% faster payments than manual UPI sharing. Key features include: 1) Real-time 250px QR codes with embedded payment details, 2) Self-contained transaction storage without Excel/files, and 3) Offline functionality for secure payments. The app targets small businesses and freelancers needing quick payment solutions, using only tkinter, Pillow and qrcode libraries for lightweight (<50MB RAM) cross-platform performance.",
+        technologies: ["Python", "Tkinter", "qrcode", "Pillow", "UPI", "GUI"],
+        features: [
+            "Split-panel interface (30/70 width ratio)",
+            "Instant QR generation (<0.3sec)",
+            "Transaction history with running total",
+            "UPI ID validation and editing",
+            "No internet/database requirements"
+        ],
+        price: 800,
+        metrics: {
+            qrSize: "250x250px",
+            ramUsage: "<50MB",
+            dependencies: "2 (Pillow, qrcode)"
+        },
+        video: "qubpay.mp4",
+        poster: "https://via.placeholder.com/400x200/2563eb/ffffff?text=QubPay+Demo"
+    },
+    {
+        id: 2,
+        title: "IoT Smart Thermostat with MQTT",
+        category: "iot",
+        description: "A Wi-Fi-enabled smart thermostat using ESP8266, DHT22, OLED, and a relay module. Users can adjust temperature thresholds via a potentiometer and monitor real-time room temperature and humidity on an OLED screen. Integrated with MQTT for data publishing and remote threshold updates through platforms like Home Assistant and Node-RED. Designed for smart homes, greenhouses, and server rooms. Relay switches based on the temperature threshold for heater or cooler control.",
+        technologies: ["ESP8266", "C++", "MQTT", "DHT22", "OLED", "Relay", "IoT"],
+        features: [
+            "Real-time temperature & humidity monitoring",
+            "OLED display with threshold control",
+            "Relay ON/OFF based on threshold",
+            "MQTT publish/subscribe (Home Assistant compatible)",
+            "Remote setpoint override via MQTT",
+            "Offline operation with local threshold"
+        ],
+        price: 1200,
+        metrics: {
+            sensor: "DHT22 (±0.5°C)",
+            relayControl: "GPIO14 (D5)",
+            mqttTopics: "iot/thermostat/data, iot/thermostat/setpoint"
+        },
+        video: "thermostat_demo.mp4",
+        poster: "https://via.placeholder.com/400x200/22c55e/ffffff?text=IoT+Thermostat"
+    }
+];
+
 
         // DOM elements
         const projectsGrid = document.getElementById('projects-grid');
