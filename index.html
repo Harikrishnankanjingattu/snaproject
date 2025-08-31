@@ -764,77 +764,77 @@
     <script>
         // Enhanced project data with your provided projects
         const projects = [
-            {
-                id: 1,
-                title: "QubPay – Dynamic UPI QR Payment App",
-                category: "software",
-                description: "A desktop application featuring a split-panel interface for instant UPI QR generation. The left panel handles user inputs (amount/note entry) while the right panel displays scannable QR codes with payment details. Includes transaction history tracking with running totals and requires no external databases. QubPay is a Python-based UPI payment solution that simplifies digital transactions through dynamic QR generation. Its innovative split-panel design separates controls (left) from outputs (right), enabling 70% faster payments than manual UPI sharing. Key features include: 1) Real-time 250px QR codes with embedded payment details, 2) Self-contained transaction storage without Excel/files, and 3) Offline functionality for secure payments. The app targets small businesses and freelancers needing quick payment solutions, using only tkinter, Pillow and qrcode libraries for lightweight (<50MB RAM) cross-platform performance.",
-                technologies: ["Python", "Tkinter", "qrcode", "Pillow", "UPI", "GUI"],
-                features: [
-                    "Split-panel interface (30/70 width ratio)",
-                    "Instant QR generation (<0.3sec)",
-                    "Transaction history with running total",
-                    "UPI ID validation and editing",
-                    "No internet/database requirements"
-                ],
-                price: 800,
-                metrics: {
-                    qrSize: "250x250px",
-                    ramUsage: "<50MB",
-                    dependencies: "2 (Pillow, qrcode)"
-                },
-                video: "qubpay.mp4",
-                poster: "https://images.pexels.com/photos/6953876/pexels-photo-6953876.jpeg?auto=compress&cs=tinysrgb&w=400"
-            },
-            {
-                id: 2,
-                title: "IoT Smart Thermostat with MQTT",
-                category: "iot",
-                description: "A Wi-Fi-enabled smart thermostat using ESP8266, DHT22, OLED, and a relay module. Users can adjust temperature thresholds via a potentiometer and monitor real-time room temperature and humidity on an OLED screen. Integrated with MQTT for data publishing and remote threshold updates through platforms like Home Assistant and Node-RED. Designed for smart homes, greenhouses, and server rooms. Relay switches based on the temperature threshold for heater or cooler control.",
-                technologies: ["ESP8266", "C++", "MQTT", "DHT22", "OLED", "Relay", "IoT"],
-                features: [
-                    "Real-time temperature & humidity monitoring",
-                    "OLED display with threshold control",
-                    "Relay ON/OFF based on threshold",
-                    "MQTT publish/subscribe (Home Assistant compatible)",
-                    "Remote setpoint override via MQTT",
-                    "Offline operation with local threshold"
-                ],
-                price: "free",
-                metrics: {
-                    sensor: "DHT22 (±0.5°C)",
-                    relayControl: "GPIO14 (D5)",
-                    mqttTopics: "iot/thermostat/data, iot/thermostat/setpoint"
-                },
-                video: "thermostat_demo.mp4",
-                poster: "https://images.pexels.com/photos/8469451/pexels-photo-8469451.jpeg?auto=compress&cs=tinysrgb&w=400"
-            }
-        ];
-        {
-    id: 3,
-    title: "IoT Smart Waste Bin with Blynk",
-    category: "iot",
-    description: "An intelligent waste bin using NodeMCU, ultrasonic sensor, and two servo motors. One servo opens/closes the lid automatically when a person approaches, while the other assists in scanning waste level inside the bin. The waste fill level is monitored with an ultrasonic sensor and displayed on the Blynk IoT app. Users get live bin status and alerts when the bin is nearly full, making it ideal for smart homes, offices, and public places.",
-    technologies: ["NodeMCU", "C++", "Blynk IoT", "Ultrasonic Sensor", "Servo Motor", "IoT"],
-    features: [
-        "Automatic lid opening when person detected",
-        "Real-time waste level monitoring",
-        "Servo-controlled lid and scanning mechanism",
-        "Blynk IoT app integration for remote monitoring",
-        "Fill percentage display on app",
-        "Full-bin alerts with notifications"
-    ],
-    price: "free",
-    metrics: {
-        sensor: "HC-SR04 Ultrasonic (±3mm)",
-        lidControl: "Servo @ GPIO4 (D2)",
-        scanControl: "Servo @ GPIO0 (D3)",
-        blynkData: "Virtual Pin V0 → Waste level (%)"
+          [
+    {
+        id: 1,
+        title: "QubPay – Dynamic UPI QR Payment App",
+        category: "software",
+        description: "A desktop application featuring a split-panel interface for instant UPI QR generation. The left panel handles user inputs (amount/note entry) while the right panel displays scannable QR codes with payment details. Includes transaction history tracking with running totals and requires no external databases. QubPay is a Python-based UPI payment solution that simplifies digital transactions through dynamic QR generation. Its innovative split-panel design separates controls (left) from outputs (right), enabling 70% faster payments than manual UPI sharing. Key features include: 1) Real-time 250px QR codes with embedded payment details, 2) Self-contained transaction storage without Excel/files, and 3) Offline functionality for secure payments. The app targets small businesses and freelancers needing quick payment solutions, using only tkinter, Pillow and qrcode libraries for lightweight (<50MB RAM) cross-platform performance.",
+        technologies: ["Python", "Tkinter", "qrcode", "Pillow", "UPI", "GUI"],
+        features: [
+            "Split-panel interface (30/70 width ratio)",
+            "Instant QR generation (<0.3sec)",
+            "Transaction history with running total",
+            "UPI ID validation and editing",
+            "No internet/database requirements"
+        ],
+        price: 800,
+        metrics: {
+            qrSize: "250x250px",
+            ramUsage: "<50MB",
+            dependencies: "2 (Pillow, qrcode)"
+        },
+        video: "qubpay.mp4",
+        poster: "https://images.pexels.com/photos/6953876/pexels-photo-6953876.jpeg?auto=compress&cs=tinysrgb&w=400"
     },
-    video: "smart_wastebin_demo.mp4",
-    poster: "https://images.pexels.com/photos/3735215/pexels-photo-3735215.jpeg?auto=compress&cs=tinysrgb&w=400"
-}
-
+    {
+        id: 2,
+        title: "IoT Smart Thermostat with MQTT",
+        category: "iot",
+        description: "A Wi-Fi-enabled smart thermostat using ESP8266, DHT22, OLED, and a relay module. Users can adjust temperature thresholds via a potentiometer and monitor real-time room temperature and humidity on an OLED screen. Integrated with MQTT for data publishing and remote threshold updates through platforms like Home Assistant and Node-RED. Designed for smart homes, greenhouses, and server rooms. Relay switches based on the temperature threshold for heater or cooler control.",
+        technologies: ["ESP8266", "C++", "MQTT", "DHT22", "OLED", "Relay", "IoT"],
+        features: [
+            "Real-time temperature & humidity monitoring",
+            "OLED display with threshold control",
+            "Relay ON/OFF based on threshold",
+            "MQTT publish/subscribe (Home Assistant compatible)",
+            "Remote setpoint override via MQTT",
+            "Offline operation with local threshold"
+        ],
+        price: "free",
+        metrics: {
+            sensor: "DHT22 (±0.5°C)",
+            relayControl: "GPIO14 (D5)",
+            mqttTopics: "iot/thermostat/data, iot/thermostat/setpoint"
+        },
+        video: "thermostat_demo.mp4",
+        poster: "https://images.pexels.com/photos/8469451/pexels-photo-8469451.jpeg?auto=compress&cs=tinysrgb&w=400"
+    },
+    {
+        id: 3,
+        title: "IoT Smart Waste Bin with Blynk",
+        category: "iot",
+        description: "An IoT-enabled smart waste bin using NodeMCU, ultrasonic sensor, and two servo motors. The first servo automatically opens and closes the lid when a person is detected, while the second assists in scanning waste inside the bin. The ultrasonic sensor measures the fill level, and data is sent to the Blynk IoT app for real-time monitoring. Users can view waste levels, receive alerts when the bin is nearly full, and ensure efficient waste management in smart homes, offices, and public areas.",
+        technologies: ["NodeMCU", "C++", "Blynk IoT", "Ultrasonic Sensor", "Servo Motor", "IoT"],
+        features: [
+            "Automatic lid opening & closing using servo",
+            "Real-time waste level detection",
+            "Ultrasonic sensor for fill percentage measurement",
+            "Blynk IoT app integration for monitoring",
+            "Bin status updates and notifications",
+            "Low-cost smart city waste management solution"
+        ],
+        price: "free",
+        metrics: {
+            sensor: "HC-SR04 Ultrasonic (±3mm)",
+            lidServo: "GPIO4 (D2)",
+            scanServo: "GPIO0 (D3)",
+            blynkVirtualPin: "V0 → Waste level (%)"
+        },
+        video: "smart_wastebin_demo.mp4",
+        poster: "https://images.pexels.com/photos/3735215/pexels-photo-3735215.jpeg?auto=compress&cs=tinysrgb&w=400"
+    }
+];
 
         // DOM elements
         const projectsGrid = document.getElementById('projects-grid');
